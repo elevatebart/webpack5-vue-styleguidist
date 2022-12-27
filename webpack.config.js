@@ -1,11 +1,10 @@
-const webpack = require('webpack');
 const path = require('path');
 const { VueLoaderPlugin } = require('vue-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const config = {
-  entry: './src/index.ts',
+  entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
@@ -17,14 +16,9 @@ const config = {
         loader: 'vue-loader'
       },
       {
-        test: /\.ts(x)?$/,
-        loader: 'ts-loader',
-        exclude: /node_modules/,
-        options: {
-          appendTsSuffixTo: [
-            /\.vue$/
-          ]
-        }
+        test: /\.js(x)?$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/
       },
       {
         test: /\.css$/,
@@ -53,6 +47,7 @@ const config = {
   resolve: {
     extensions: [
       '.js',
+      '.jsx',
       '.vue',
       '.tsx',
       '.ts'

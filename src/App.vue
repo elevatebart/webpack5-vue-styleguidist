@@ -1,20 +1,17 @@
 <template>
   <div>
     <h1 class="text-4xl text-white bg-black">
-      {{name}}
+      {{ name }}
     </h1>
+    <Test/>
   </div>
 </template>
-<script lang="ts">
-import { defineComponent } from 'vue'
 
-export default defineComponent({
-  data: function() {
-    return {
-      name: 'Hello World!',
-    }
-  },
-});
+<script setup>
+import { ref } from 'vue'
+import Test from './Test'
+
+const name = ref('Hello World!')
 </script>
 
 <style global>
